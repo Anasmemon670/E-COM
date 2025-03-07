@@ -41,14 +41,14 @@ var products = [
     id: 102,
     title: "Mobile",
     variations: [
-      { id: 1, color: "black", price: 50000, quantity: 5 },
-      { id: 2, color: "red", price: 50000, quantity: 1 },
-      { id: 3, color: "silver", price: 55000, quantity: 8 },
+      { id: 1, color: "Silver", price: 35000, quantity: 5 },
+      { id: 2, color: "red", price: 25000, quantity: 1 },
+      { id: 3, color: "black", price: 75000, quantity: 8 },
     ],
     reviews: [
       {
         id: 1,
-        user: "Ahmad",
+        user: "Suffyain",
         rating: 4.0,
         title: "Good Product",
         comments: "It is a very good product ....",
@@ -57,7 +57,7 @@ var products = [
       },
       {
         id: 2,
-        user: "Zubair",
+        user: "Kamran",
         rating: 4.5,
         title: "Very Good Product",
         comments: "zubair It is a very good product ....",
@@ -66,7 +66,7 @@ var products = [
       },
       {
         id: 3,
-        user: "Ali",
+        user: "Ayan",
         rating: 5.0,
         title: "bad Product",
         comments: "ali It is a very good product ....",
@@ -85,7 +85,7 @@ var products = [
     reviews: [
       {
         id: 1,
-        user: "Ahmad",
+        user: "Rashid",
         rating: 4.0,
         title: "Good Product",
         comments: "It is a very good product ....",
@@ -94,7 +94,7 @@ var products = [
       },
       {
         id: 2,
-        user: "Zubair",
+        user: "Rayyan",
         rating: 3.0,
         title: "Very Good Product",
         comments: "zubair It is a very good product ....",
@@ -105,7 +105,7 @@ var products = [
   },
 ];
 
-// EXERCISE NO 01
+// EXERCISE NO 01;
 
 function FindProductByID(ProductID) {
   for(let i = 0; i < products.length; i++){
@@ -158,7 +158,7 @@ function SearchProducts() {
 
 // /--------------------------------------------------------------------------------------------------------------------/ 
 
-// EXERCISE NO 02
+// EXERCISE NO 02;
 
 function ShowAllProducts() {
   let AllProductName = document.getElementById("listproductsTitle");
@@ -181,7 +181,7 @@ function ShowAllProducts() {
 
 // /--------------------------------------------------------------------------------------------------------------------/ 
 
-// EXERCISE NO 03
+// EXERCISE NO 03;
 
 function ShowAllProductsColor() {
   let AllProductColor = document.getElementById("listproductsColor");
@@ -202,5 +202,175 @@ function ShowAllProductsColor() {
   AllProductColor.innerHTML = ListColor;
 }
 
-// /--------------------------------------------------------------------------------------------------------------------/ 
+// /--------------------------------------------------------------------------------------------------------------------/
 
+// EXERCISE NO 04;
+
+
+function getTotalQuantity() {
+  let productId = 101;
+  let resultElement = document.getElementById("listproductsQuantity");
+
+  let product = products.find(p => p.id === productId);
+
+  if (!product) {
+    resultElement.innerHTML = "<span style='color: red;'>Product Not Found</span>";
+    return;
+  }
+
+  let totalQuantity = product.variations.reduce((sum, variation) => sum + variation.quantity, 0);
+
+  resultElement.innerHTML = `<h3><strong>Total Quantity: ${totalQuantity}</strong></h3>`;
+}
+
+// /--------------------------------------------------------------------------------------------------------------------/
+
+// EXERCISE NO 05;
+
+function findLowStockProducts() {
+  let StockElement = document.getElementById("listproductsStock");
+
+  let LowStockProducts = products
+  .filter(product => product.variations.some(variation => variation.quantity < 2))
+  .map(product => `${product.title}: ${product.variations.filter(variation => variation.quantity < 2).map(variation => variation.quantity).join(", ")}`)
+
+  if (LowStockProducts.length === 0) {
+    StockElement.innerHTML = "<h3 style='color: red;'>Product Not Found.</h3>";
+    return;
+  }
+
+  StockElement.innerHTML = `<h3>Low Stock Products:</h3> <p>${LowStockProducts.join("<br>")}</p>`;
+}
+
+// /--------------------------------------------------------------------------------------------------------------------/
+
+// EXERCISE NO 06;
+  
+function HighestRatedProduct(){
+  let Result = document.getElementById("listproductHighestRated");
+
+  if (products.length === 0) {
+    resultElement.innerHTML = "<p style='color: red;'>No products available.</p>";
+    return;
+};
+
+  let HighRateProduct = products.map(products => {
+    let TotalRating = products.reviews.reduce((sum , review) => sum + review.rating , 0);
+    let AvgRating = TotalRating / products.reviews.length
+
+    return {
+      title: products.title,
+      AvgRating: AvgRating
+    };
+  });
+
+  let HighestRating = HighRateProduct.reduce((max , product) => 
+  product.AvgRating > max.AvgRating ? products: max
+);
+
+Result.innerHTML = `<h3 style="color: green;">Highest Rated Product: ${HighestRating.title} (${HighestRating.AvgRating.toFixed(1)}⭐)</h3>`;
+
+
+}; 
+
+// /--------------------------------------------------------------------------------------------------------------------/
+
+// EXERCISE NO 07;
+
+function FindActiveReviews() {
+  let inputreviews = document.getElementById("ProductReviews").value;
+  let ReviewsResult = document.getElementById("getActiveReviews");
+
+  let productID = parseInt(inputreviews);
+
+  let ApprovedReviews = [];
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].id === productID) {
+      for (let j = 0; j < products[i].reviews.length; j++) {
+        if (products[i].reviews[j].status) {
+          ApprovedReviews.push(products[i].reviews[j]);
+        };
+      };
+    };
+  };
+  let TotalReviews = "<h2>Approved Reviews</h2>";
+  for (let k = 0; k < ApprovedReviews.length; k++) {
+    TotalReviews += `
+      <div class="review">
+        <p><strong>User:</strong> ${ApprovedReviews[k].user}</p>
+        <p><strong>Rating:</strong> ${ApprovedReviews[k].rating}</p>
+        <p><strong>Comment:</strong> ${ApprovedReviews[k].comments}</p>
+        <p><strong>Status:</strong> ${ApprovedReviews[k].status}</p>
+      </div>
+    `;
+  };
+  ReviewsResult.innerHTML = TotalReviews;
+}
+
+// /--------------------------------------------------------------------------------------------------------------------/
+
+// EXERCISE NO 08;
+
+function FindMostExpensiveProducts() {
+  let ExpensiveProduct = document.getElementById("ExpensiveProduct").value;
+  let ExpensiveProductResult = document.getElementById("getExpensiveProducts");
+
+  let productID = parseInt(ExpensiveProduct);
+
+  let MostExpensivePrice = 0;
+  let MostExpensiveVariation = null;
+  let MostExpensiveProduct = null;
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].id === productID) {
+      for (let j = 0; j < products[i].variations.length; j++) {
+        if (products[i].variations[j].price > MostExpensivePrice) {
+          MostExpensivePrice = products[i].variations[j].price;
+          MostExpensiveVariation = products[i].variations[j];
+          MostExpensiveProduct = products[i];
+        };
+      };
+    };
+  };
+
+  if (MostExpensiveVariation) {
+    ExpensiveProductResult.innerHTML = `
+      <h2>Most Expensive Product.</h2>
+      <div class="product">
+        <p><strong>Product:</strong> ${MostExpensiveProduct.title}</p>
+        <p><strong>Color:</strong> ${MostExpensiveVariation.color}</p>
+        <p><strong>Price:</strong> $${MostExpensiveVariation.price}</p>
+      </div>
+    `;
+  } else {
+    ExpensiveProductResult.innerHTML = "<p style='color: red;'>No expensive product found.</p>";
+  }
+} 
+
+// /--------------------------------------------------------------------------------------------------------------------/
+
+// EXERCISE NO 09;
+
+function CalculateTotalStockQuantity(){
+  let TotalProduct = document.getElementById("TotalProduct").value;
+  let StockResult = document.getElementById("getTotalStockProducts");
+
+  let productID = parseInt(TotalProduct); 
+
+  let TotalValueOfStockProduct = 0;
+
+  for(let i = 0; i < products.length; i++){
+    if(products[i].id === productID){
+      for(let j = 0; j < products[i].variations.length; j++){
+        TotalValueOfStockProduct += products[i].variations[j].price * products[i].variations[j].quantity;
+      };
+    };
+  };
+
+  if(TotalValueOfStockProduct){
+  StockResult.innerHTML = `<p><strong>Total Stock Value: ${TotalValueOfStockProduct}</strong></p>`;
+} else{
+  StockResult.innerHTML = "<p style='color: red;'>No Stock product are Available.</p>";
+};
+}

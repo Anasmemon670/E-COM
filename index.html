@@ -5,55 +5,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nested Loop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="website icon" type="png"
+        href="data:image/jpeg;base64,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">
 </head>
 
 <body>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
+    <!-- <input type="checkbox"  class="input1" id="toogle"> -->
 
-        input {
-            padding: 10px;
-            width: 200px;
-            margin: 10px;
-        }
+    <!-- <div class="display">
+        <label for="toogle">
+            <div class="circle">
+                <svg  class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
+                </svg>
+                <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clip-rule="evenodd" />
+                  </svg>
+                  
 
-        button {
-            padding: 10px 15px;
-            background-color: blue;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+            </div>
+        </label>
+    </div> -->
 
-        button:hover {
-            background-color: darkblue;
-        }
-
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        #listproducts {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-    </style>
-    <h2>Find Product by ID</h2>
+    <h2>Find Product by ID.</h2>
     <input type="number" id="ProductInput" placeholder="Enter a Product ID">
     <button onclick="SearchProducts()">Search</button>
     <div id="result"></div>
 
-    <h2>Click the Button to Check the Product title</h2>
+    <h2>Click the Button to Check the Product title.</h2>
     <button onclick=" ShowAllProducts()">See Product</button>
     <div id="listproductsTitle"></div>
 
-    <h2>Click the Button to Check the Product Color</h2>
+    <h2>Click the Button to Check the Product Color/</h2>
     <button onclick=" ShowAllProductsColor()">See Product</button>
     <div id="listproductsColor"></div>
+
+    <h2>Click the Button to Check the All Product Quantity.</h2>
+    <button onclick=" getTotalQuantity()">See Product Quantity</button>
+    <div id="listproductsQuantity"></div>
+
+    <h2>Click the Button to Check the Low Stock Product.</h2>
+    <button onclick=" findLowStockProducts()">See Product Stock </button>
+    <div id="listproductsStock"></div>
+
+    <h2>Click the Button to Check the Highest Rated Product.</h2>
+    <button onclick="HighestRatedProduct()">Find now</button>
+    <div id="listproductHighestRated"></div>
+
+    <h2>Find Approved Reviews.</h2>
+    <input type="number" id="ProductReviews" placeholder="Enter a Product ID">
+    <button onclick="FindActiveReviews()">Find now</button>
+    <div id="getActiveReviews"></div>
+
+    <h2>Find the Most Expensive Product.</h2>
+    <input type="number" id="ExpensiveProduct" placeholder="Enter a Product ID">
+    <button onclick="FindMostExpensiveProducts()">Find now</button>
+    <div id="getExpensiveProducts"></div>
+
+    <h2>Find the Total Stock Product.</h2>
+    <input type="number" id="TotalProduct" placeholder="Enter a Product ID">
+    <button onclick="CalculateTotalStockQuantity()">Find now</button>
+    <div id="getTotalStockProducts"></div>
     <script src="app.js"></script>
 </body>
 
