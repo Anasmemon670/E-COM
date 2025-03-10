@@ -1,16 +1,24 @@
-*{
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: 0.5s;
 }
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 50px;
-}
+} */
 
-input {
+/* .Product-Find-System {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    flex-direction: column;
+} */
+
+/* input {
     padding: 10px;
     width: 200px;
     margin: 10px;
@@ -28,63 +36,399 @@ button:hover {
     background-color: darkblue;
 }
 
-#result {
+#result,
+#listproductsTitle,
+#listproductsColor,
+#listproductsQuantity,
+#listproductsStock,
+#listproductHighestRated,
+#getActiveReviews,
+#getExpensiveProducts,
+#getTotalStockProducts {
     margin-top: 20px;
     font-size: 18px;
+} */
+
+/* #listproducts {
+    margin-top: 20px;
+    font-size: 18px;
+} */
+
+/* .Theme-Button {
+    display: flex;
+    justify-content: end;
 }
 
-#listproducts {
-    margin-top: 20px;
-    font-size: 18px;
-}
-/* svg{
-    width: 88px;
-    position: absolute;
-}
-.input1{
+#toogle {
     display: none;
 }
-.display{
+
+.display-Background {
     width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
     background: white;
 }
-label{
-    width: 400px;
-    height: 200px;
+
+label {
+    display: flex;
+    justify-content: end;
+    width: 200px;
+    height: 90px;
     border-radius: 999px;
     background: #f3f3f3;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05) inset;
     cursor: pointer;
+    position: relative;
 }
-.circle{
-    border: solid;
-    width: 160px;
-    height: 160px;
+
+.circle {
+    width: 75px;
+    height: 75px;
     border-radius: 99px;
-    background: white;
+    background: #F3F3F3;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05),
-    -10px -10px 30px rgba(0, 0, 0, 0.05) inset;
+        -10px -10px 30px rgba(0, 0, 0, 0.05) inset;
     position: absolute;
     top: 50%;
     left: 0%;
-    transform: translate(10% , -50%);
+    transform: translate(10%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
-
+    overflow: hidden;
 }
-.sun{
+
+svg {
+    width: 50px;
+    position: absolute;
+}
+
+.sun {
     color: #ffd600;
     margin-top: 0%;
+    opacity: 1;
 }
-.moon{
+
+.moon {
     margin-top: -150%;
     color: white;
+    opacity: 0;
 }
-.input1[type=checkbox]:checked + .display {
+
+input[type=checkbox]:checked+.display-Background {
     background: #2c2c2c;
+}
+
+input[type=checkbox]:checked+.display-Background label {
+    background: #1f1f1f;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5) inset;
+}
+
+input[type=checkbox]:checked+.display-Background label .circle {
+    left: 100%;
+    transform: translate(-110%, -50%);
+    background: #2c2c2c;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5),
+        -10px -10px 30px rgba(0, 0, 0, 0.5) inset;
+}
+
+input[type=checkbox]:checked+.display-Background label .circle .sun {
+    margin-top: 150%;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked+.display-Background label .circle .moon {
+    margin-top: 0%;
+    opacity: 1;
+}
+
+label:active .circle {
+    width: 120px;
 } */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.display-Background {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+}
+
+input {
+    padding: 12px;
+    width: 250px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    background: #f5f5f5;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+                -5px -5px 10px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.7),
+                0 0 15px rgba(0, 123, 255, 0.5);
+    transform: scale(1.02);
+}
+
+button {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+                -5px -5px 10px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2),
+                -5px -5px 15px rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+#result,
+#listproductsTitle,
+#listproductsColor,
+#listproductsQuantity,
+#listproductsStock,
+#listproductHighestRated,
+#getActiveReviews,
+#getExpensiveProducts,
+#getTotalStockProducts {
+    margin: 20px auto;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+                -5px -5px 10px rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards, float 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.Theme-Button {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    width: 100%;
+}
+
+#toogle {
+    display: none;
+}
+
+label {
+    display: flex;
+    justify-content: end;
+    width: 200px;
+    height: 90px;
+    border-radius: 999px;
+    background: #f3f3f3;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05) inset;
+    cursor: pointer;
+    position: relative;
+}
+
+.circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 99px;
+    background: #F3F3F3;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05),
+        -10px -10px 30px rgba(0, 0, 0, 0.05) inset;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(10%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+svg {
+    width: 50px;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.sun {
+    color: #ffd600;
+    margin-top: 0%;
+    opacity: 1;
+}
+
+.moon {
+    margin-top: -150%;
+    color: #ffff;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked+.display-Background {
+    background: #2c2c2c;
+    color: #fff;
+}
+
+input[type=checkbox]:checked+.display-Background input {
+    background: #2c2c2c;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+                -5px -5px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+input[type=checkbox]:checked+.display-Background button {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+                -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+input[type=checkbox]:checked+.display-Background #result,
+input[type=checkbox]:checked+.display-Background #listproductsTitle,
+input[type=checkbox]:checked+.display-Background #listproductsColor,
+input[type=checkbox]:checked+.display-Background #listproductsQuantity,
+input[type=checkbox]:checked+.display-Background #listproductsStock,
+input[type=checkbox]:checked+.display-Background #listproductHighestRated,
+input[type=checkbox]:checked+.display-Background #getActiveReviews,
+input[type=checkbox]:checked+.display-Background #getExpensiveProducts,
+input[type=checkbox]:checked+.display-Background #getTotalStockProducts {
+    background: #2c2c2c;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+                -5px -5px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+input[type=checkbox]:checked+.display-Background label {
+    background: #1f1f1f;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5) inset;
+}
+
+input[type=checkbox]:checked+.display-Background label .circle {
+    left: 100%;
+    transform: translate(-110%, -50%);
+    background: #2c2c2c;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5),
+        -10px -10px 30px rgba(0, 0, 0, 0.5) inset;
+}
+
+input[type=checkbox]:checked+.display-Background label .circle .sun {
+    margin-top: 150%;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked+.display-Background label .circle .moon {
+    margin-top: 0%;
+    opacity: 1;
+}
+
+label:active .circle {
+    width: 120px;
+} 
+
+@media (max-width: 768px) {
+    .Theme-Button {
+        justify-content: center;
+    }
+
+    label {
+        width: 150px;
+        height: 70px;
+    }
+
+    .circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    svg {
+        width: 40px;
+    }
+
+    input, button {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #result,
+    #listproductsTitle,
+    #listproductsColor,
+    #listproductsQuantity,
+    #listproductsStock,
+    #listproductHighestRated,
+    #getActiveReviews,
+    #getExpensiveProducts,
+    #getTotalStockProducts {
+        max-width: 100%;
+    }
+}

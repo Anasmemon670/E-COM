@@ -160,7 +160,7 @@ function SearchProducts() {
 
 // EXERCISE NO 02;
 
-function ShowAllProducts() {
+function ShowAllProductsTitle() {
   let AllProductName = document.getElementById("listproductsTitle");
 
   if (products.length === 0) {
@@ -171,7 +171,7 @@ function ShowAllProducts() {
   let listAllProducts = '<h3><strong>All Product Title</strong></h3>';
 
   for (let i = 0; i < products.length; i++) {
-    listAllProducts += `<p>${products[i].title}</p>`;
+    listAllProducts += `<p> ${i + 1}) ${products[i].title}</p>`;
   }
 
   listAllProducts += `</p>`;
@@ -294,6 +294,12 @@ function FindActiveReviews() {
       };
     };
   };
+
+  if (ApprovedReviews.length === 0) {
+    ReviewsResult.innerHTML = "<p style = 'color: darkred;'>No approved reviews found for this product.</p>";
+    return;
+  }
+
   let TotalReviews = "<h2>Approved Reviews</h2>";
   for (let k = 0; k < ApprovedReviews.length; k++) {
     TotalReviews += `
@@ -374,3 +380,6 @@ function CalculateTotalStockQuantity(){
   StockResult.innerHTML = "<p style='color: red;'>No Stock product are Available.</p>";
 };
 }
+
+
+
